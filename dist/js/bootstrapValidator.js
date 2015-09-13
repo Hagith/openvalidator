@@ -2,7 +2,7 @@
  * BootstrapValidator ()
  * The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
  *
- * @version     v0.5.2, built on 2015-08-19 8:48:47 PM
+ * @version     v0.5.2, built on 2015-09-13 1:04:35 PM
  * @author      https://github.com/OpenValidator/openvalidator/blob/master/CONTRIBUTORS.md
  * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
  * @license     MIT
@@ -786,10 +786,10 @@ if (typeof jQuery === 'undefined') {
          */
         disableSubmitButtons: function(disabled) {
             if (!disabled) {
-                this.$form.find(this.options.submitButtons).removeAttr('disabled');
+                this.$form.find(this.options.submitButtons).removeClass('disabled');
             } else if (this.options.live !== 'disabled') {
                 // Don't disable if the live validating mode is disabled
-                this.$form.find(this.options.submitButtons).attr('disabled', 'disabled');
+                this.$form.find(this.options.submitButtons).addClass('disabled');
             }
 
             return this;
