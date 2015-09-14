@@ -305,7 +305,7 @@ if (typeof jQuery === 'undefined') {
                 $field.off(events).on(events, function() {
                     that.updateStatus($(this), that.STATUS_NOT_VALIDATED);
                 });
-                
+
                 // Create help block elements for showing the error messages
                 $field.data('bv.messages', $message);
                 for (validatorName in this.options.fields[field].validators) {
@@ -365,7 +365,7 @@ if (typeof jQuery === 'undefined') {
                         $icon.addClass('bv-icon-input-group')
                              .insertAfter($parent.find('.input-group').eq(0));
                     }
-                    
+
                     if (container) {
                         $field
                             // Show tooltip/popover message when field gets focus
@@ -594,7 +594,7 @@ if (typeof jQuery === 'undefined') {
             var cannotType = $.inArray($field.attr('type'), ['button', 'checkbox', 'file', 'hidden', 'image', 'radio', 'reset', 'submit']) !== -1;
             return (cannotType || $field.val().length >= threshold);
         },
-        
+
         // ---
         // Events
         // ---
@@ -644,7 +644,10 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 // Focus to the first invalid field
-                $invalidField.focus();
+                // Delay forces showing tooltip/popover on consecutive submits of invalid form
+                setTimeout(function() {
+                    $invalidField.focus();
+                }, 100);
             }
         },
 
@@ -948,7 +951,7 @@ if (typeof jQuery === 'undefined') {
                 $(this).data('bv.messages').find('.help-block[data-bv-validator="' + validator + '"][data-bv-for="' + field + '"]').html(message);
             });
         },
-        
+
         /**
          * Update all validating results of field
          *
@@ -1776,7 +1779,7 @@ if (typeof jQuery === 'undefined') {
             validatorError: 'error.validator.bv',
             validatorSuccess: 'success.validator.bv'
         },
-        
+
         // Whether to be verbose when validating a field or not.
         // Possible values:
         // - true:  when a field has multiple validators, all of them will be checked, and respectively - if errors occur in
